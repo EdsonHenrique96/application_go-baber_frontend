@@ -1,10 +1,12 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useContext } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
 import * as Yup from 'yup';
 
 import { FiLogIn, FiLock, FiMail } from 'react-icons/fi';
+
+import AuthContext from '../../contexts/AuthContext';
 
 import { Container, Content, Background } from './styles';
 import Button from '../../components/Button';
@@ -15,6 +17,7 @@ import getFormattedValidationError from '../../utils/getFormattedValidationError
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const { name } = useContext(AuthContext);
 
   const submitHandler = useCallback(async (data: any): Promise<void> => {
     try {
